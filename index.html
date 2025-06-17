@@ -104,7 +104,7 @@
             </div>
         </section>
         <!-- NEW FOOD SCANNER SECTION -->
-         <section id="experiences" class="section" style="min-height: 700px; padding: 60px 0;">
+        <section id="experiences" class="section" style="min-height: 700px; padding: 60px 0;">
             <div class="container">
                 <div class="row">
                     <div class="col col_12">
@@ -687,7 +687,7 @@
                                 }
                             </style>
 
-                            <div class="scanner-title">Scan the Product to be associated with tag #A367</div>
+                            <div class="scanner-title">Scan the Product to associate with tag #A367</div>
                             
                             <div class="scanner-controls">
                                 <button class="scanner-btn" id="bb-start-scan" onclick="bbStartScanner()">Start Camera</button>
@@ -890,111 +890,109 @@ class BrightBiteFoodScanner {
         try {
             this.scanner = new Html5Qrcode("bb-qr-reader");
             
-            // Try different camera configurations for mobile compatibility
-            let cameraConfig;
-            let scanConfig;
-
-            // Mobile-specific camera setup
             const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
             
             if (isMobile) {
-                // For mobile: force rear camera and optimize for easier scanning
-                const configs = [
-                    // Config 1: Force rear camera with specific mobile optimization
-                    { 
-                        facingMode: { exact: "environment" },
-                        width: { ideal: 1920, max: 1920 },
-                        height: { ideal: 1080, max: 1080 }
-                    },
-                    // Config 2: Rear camera with lower resolution fallback
-                    { 
-                        facingMode: { exact: "environment" },
-                        width: { ideal: 1280 },
-                        height: { ideal: 720 }
-                    },
-                    // Config 3: Any rear camera
-                    { facingMode: "environment" },
-                    // Config 4: Force rear if available
-                    { facingMode: { ideal: "environment" } }
-                ];
-
-                let scannerStarted = false;
+                // AGGRESSIVE mobile rear camera forcing
+                let cameraId = null;
                 
-                for (let i = 0; i < configs.length && !scannerStarted; i++) {
-                    try {
-                        cameraConfig = configs[i];
-                        
-                        // Mobile-optimized scanning - easier to scan
-                        scanConfig = {
-                            fps: 15, // Higher FPS for better scanning
-                            qrbox: function(viewfinderWidth, viewfinderHeight) {
-                                // Larger, more forgiving scan area for mobile
-                                const minDimension = Math.min(viewfinderWidth, viewfinderHeight);
-                                const qrboxSize = Math.floor(minDimension * 0.8); // 80% - larger area
-                                
-                                console.log(`Mobile qrbox: ${qrboxSize}x${qrboxSize} (viewfinder: ${viewfinderWidth}x${viewfinderHeight})`);
-                                
-                                return {
-                                    width: Math.max(250, qrboxSize), // Larger minimum: 250px
-                                    height: Math.max(250, qrboxSize)
-                                };
-                            },
-                            aspectRatio: 1.0,
-                            disableFlip: false,
-                            // Mobile scanning optimizations
-                            experimentalFeatures: {
-                                useBarCodeDetectorIfSupported: true
-                            },
-                            // Better video quality for scanning
-                            videoConstraints: {
-                                width: { min: 640, ideal: 1920, max: 1920 },
-                                height: { min: 480, ideal: 1080, max: 1080 },
-                                frameRate: { ideal: 30, max: 60 },
-                                focusMode: "continuous", // Auto-focus for better scanning
-                                exposureMode: "continuous"
-                            },
-                            // More liberal scanning settings
-                            supportedScanTypes: [
-                                Html5QrcodeScanType.SCAN_TYPE_CAMERA
-                            ]
-                        };
-
-                        await this.scanner.start(
-                            cameraConfig,
-                            scanConfig,
-                            (decodedText) => this.onScanSuccess(decodedText),
-                            (error) => {
-                                // Suppress continuous scan errors
-                            }
-                        );
-                        
-                        scannerStarted = true;
-                        this.showStatus('Rear camera active - hold steady and align barcode in square', 'success');
-                        
-                    } catch (configError) {
-                        console.log(`Camera config ${i + 1} failed:`, configError);
-                        if (i === configs.length - 1) {
-                            throw configError; // Throw the last error if all configs fail
-                        }
+                try {
+                    // Get all cameras and find rear one
+                    const cameras = await Html5Qrcode.getCameras();
+                    console.log('Available cameras:', cameras);
+                    
+                    // Look for rear camera by label
+                    const rearCamera = cameras.find(camera => 
+                        camera.label.toLowerCase().includes('back') ||
+                        camera.label.toLowerCase().includes('rear') ||
+                        camera.label.toLowerCase().includes('environment') ||
+                        camera.label.includes('0') // Often camera 0 is rear
+                    );
+                    
+                    if (rearCamera) {
+                        cameraId = rearCamera.id;
+                        console.log('Found rear camera:', rearCamera);
+                    } else {
+                        // Use last camera (usually rear on mobile)
+                        cameraId = cameras[cameras.length - 1]?.id;
+                        console.log('Using last camera as rear:', cameras[cameras.length - 1]);
                     }
+                } catch (cameraError) {
+                    console.log('Camera enumeration failed:', cameraError);
                 }
-            } else {
-                // Desktop configuration
-                cameraConfig = { facingMode: "environment" };
-                scanConfig = {
-                    fps: 10,
-                    qrbox: { width: 280, height: 280 }
+
+                // Mobile-optimized config for EASIER scanning
+                const scanConfig = {
+                    fps: 20, // Higher FPS for more scan attempts
+                    qrbox: { width: 300, height: 300 }, // Fixed large size
+                    aspectRatio: 1.0,
+                    disableFlip: false,
+                    // More aggressive scanning settings
+                    rememberLastUsedCamera: true,
+                    showTorchButtonIfSupported: true,
+                    showZoomSliderIfSupported: true,
+                    defaultZoomValueIfSupported: 2, // 2x zoom for better barcode reading
+                    // Support multiple formats for better detection
+                    formatsToSupport: [
+                        Html5QrcodeSupportedFormats.QR_CODE,
+                        Html5QrcodeSupportedFormats.CODE_128,
+                        Html5QrcodeSupportedFormats.CODE_39,
+                        Html5QrcodeSupportedFormats.CODE_93,
+                        Html5QrcodeSupportedFormats.EAN_13,
+                        Html5QrcodeSupportedFormats.EAN_8,
+                        Html5QrcodeSupportedFormats.UPC_A,
+                        Html5QrcodeSupportedFormats.UPC_E
+                    ]
                 };
 
-                await this.scanner.start(
-                    cameraConfig,
-                    scanConfig,
-                    (decodedText) => this.onScanSuccess(decodedText),
-                    (error) => {
-                        // Suppress scan error messages
+                // Try with specific camera ID first, then fallback
+                if (cameraId) {
+                    try {
+                        await this.scanner.start(
+                            cameraId, // Use specific rear camera
+                            scanConfig,
+                            (decodedText) => this.onScanSuccess(decodedText),
+                            (error) => { /* suppress */ }
+                        );
+                        this.showStatus('📱 Rear camera active - Try different angles and distances', 'success');
+                    } catch (specificCameraError) {
+                        console.log('Specific camera failed, trying constraints:', specificCameraError);
+                        // Fallback to constraints
+                        await this.scanner.start(
+                            { facingMode: { exact: "environment" } },
+                            scanConfig,
+                            (decodedText) => this.onScanSuccess(decodedText),
+                            (error) => { /* suppress */ }
+                        );
+                        this.showStatus('📱 Camera active - Try different angles and distances', 'success');
                     }
+                } else {
+                    // No specific camera found, use constraints
+                    await this.scanner.start(
+                        { facingMode: { exact: "environment" } },
+                        scanConfig,
+                        (decodedText) => this.onScanSuccess(decodedText),
+                        (error) => { /* suppress */ }
+                    );
+                    this.showStatus('📱 Camera active - Try different angles and distances', 'success');
+                }
+            } else {
+                // Desktop configuration (unchanged since it works)
+                await this.scanner.start(
+                    { facingMode: "environment" },
+                    {
+                        fps: 10,
+                        qrbox: { width: 280, height: 280 },
+                        formatsToSupport: [
+                            Html5QrcodeSupportedFormats.QR_CODE,
+                            Html5QrcodeSupportedFormats.CODE_128,
+                            Html5QrcodeSupportedFormats.EAN_13,
+                            Html5QrcodeSupportedFormats.UPC_A
+                        ]
+                    },
+                    (decodedText) => this.onScanSuccess(decodedText),
+                    (error) => { /* suppress */ }
                 );
-
                 this.showStatus('Camera active - point at barcode or QR code', 'success');
             }
 
@@ -1364,6 +1362,5 @@ if (document.readyState === 'loading') {
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="js/libs.min.js"></script>
 <script src="js/main.js"></script>
-
 </body>
 </html>
