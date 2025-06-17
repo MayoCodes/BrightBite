@@ -687,8 +687,8 @@
                                 }
                             </style>
 
-                            <div class="scanner-title">Scan the Product to associate with tag #A367</div>
-
+                            <div class="scanner-title">Scan the Product to be associated with tag #A367</div>
+                            
                             <div class="scanner-controls">
                                 <button class="scanner-btn" id="bb-start-scan" onclick="bbStartScanner()">Start Camera</button>
                                 <button class="scanner-btn" id="bb-stop-scan" onclick="bbStopScanner()" disabled>Stop Camera</button>
@@ -898,20 +898,24 @@ class BrightBiteFoodScanner {
             const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
             
             if (isMobile) {
-                // For mobile: try multiple camera configurations
+                // For mobile: force rear camera and optimize for easier scanning
                 const configs = [
-                    // Config 1: Environment camera with exact constraint
-                    { facingMode: { exact: "environment" } },
-                    // Config 2: Environment camera with ideal constraint
-                    { facingMode: { ideal: "environment" } },
-                    // Config 3: Any camera
-                    {},
-                    // Config 4: Specific mobile constraints
+                    // Config 1: Force rear camera with specific mobile optimization
                     { 
-                        facingMode: "environment",
+                        facingMode: { exact: "environment" },
+                        width: { ideal: 1920, max: 1920 },
+                        height: { ideal: 1080, max: 1080 }
+                    },
+                    // Config 2: Rear camera with lower resolution fallback
+                    { 
+                        facingMode: { exact: "environment" },
                         width: { ideal: 1280 },
                         height: { ideal: 720 }
-                    }
+                    },
+                    // Config 3: Any rear camera
+                    { facingMode: "environment" },
+                    // Config 4: Force rear if available
+                    { facingMode: { ideal: "environment" } }
                 ];
 
                 let scannerStarted = false;
@@ -920,27 +924,39 @@ class BrightBiteFoodScanner {
                     try {
                         cameraConfig = configs[i];
                         
-                        // Mobile-specific scan config with visible qrbox
+                        // Mobile-optimized scanning - easier to scan
                         scanConfig = {
-                            fps: 8,
+                            fps: 15, // Higher FPS for better scanning
                             qrbox: function(viewfinderWidth, viewfinderHeight) {
-                                // Calculate a visible square for mobile
+                                // Larger, more forgiving scan area for mobile
                                 const minDimension = Math.min(viewfinderWidth, viewfinderHeight);
-                                const qrboxSize = Math.floor(minDimension * 0.7); // 70% of smallest dimension
+                                const qrboxSize = Math.floor(minDimension * 0.8); // 80% - larger area
                                 
                                 console.log(`Mobile qrbox: ${qrboxSize}x${qrboxSize} (viewfinder: ${viewfinderWidth}x${viewfinderHeight})`);
                                 
                                 return {
-                                    width: Math.max(200, qrboxSize), // Minimum 200px
-                                    height: Math.max(200, qrboxSize)
+                                    width: Math.max(250, qrboxSize), // Larger minimum: 250px
+                                    height: Math.max(250, qrboxSize)
                                 };
                             },
                             aspectRatio: 1.0,
                             disableFlip: false,
+                            // Mobile scanning optimizations
+                            experimentalFeatures: {
+                                useBarCodeDetectorIfSupported: true
+                            },
+                            // Better video quality for scanning
                             videoConstraints: {
-                                width: { min: 640, ideal: 1280, max: 1920 },
-                                height: { min: 480, ideal: 720, max: 1080 }
-                            }
+                                width: { min: 640, ideal: 1920, max: 1920 },
+                                height: { min: 480, ideal: 1080, max: 1080 },
+                                frameRate: { ideal: 30, max: 60 },
+                                focusMode: "continuous", // Auto-focus for better scanning
+                                exposureMode: "continuous"
+                            },
+                            // More liberal scanning settings
+                            supportedScanTypes: [
+                                Html5QrcodeScanType.SCAN_TYPE_CAMERA
+                            ]
                         };
 
                         await this.scanner.start(
@@ -953,7 +969,7 @@ class BrightBiteFoodScanner {
                         );
                         
                         scannerStarted = true;
-                        this.showStatus('Mobile camera active - point at barcode inside the square', 'success');
+                        this.showStatus('Rear camera active - hold steady and align barcode in square', 'success');
                         
                     } catch (configError) {
                         console.log(`Camera config ${i + 1} failed:`, configError);
@@ -1050,7 +1066,7 @@ class BrightBiteFoodScanner {
             navigator.vibrate([100, 50, 100]); // Success vibration pattern
         }
 
-        this.showStatus(`Scanned: ${decodedText}`, 'success');
+        this.showStatus(`✅ Scanned: ${decodedText}`, 'success');
         this.lookupProduct(decodedText);
 
         // Auto-stop scanner on mobile after successful scan to save battery
@@ -1058,7 +1074,7 @@ class BrightBiteFoodScanner {
         if (isMobile) {
             setTimeout(() => {
                 this.stopScanner();
-            }, 1000);
+            }, 1500); // Give more time to see the success message
         }
     }
 
