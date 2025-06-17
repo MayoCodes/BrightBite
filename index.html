@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <!-- Your existing head content -->
+    <meta charset="utf-8">
+    <title>BrightBite</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1 , maximum-scale=1, user-scalable=0">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/libs.min.css"/>
+    <link rel="stylesheet" href="css/main.css"/>
+    <link rel="stylesheet" href="css/appp.css"/>
+    <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Add QR Code Scanner Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.3.8/html5-qrcode.min.js"></script>
+</head>
+<body>
+<div id="wrapper" class="wrapper">
+    <!-- Your existing header -->
+    <header id="header" class="header">
+        <div class="container">
+            <!-- logo -->
+            <div class="site-logo">
+                <a href="index.html" class="site-logo__link">
+                    <picture>
+                        <source media="(max-width: 767px)" srcset="images/logo-mob.png">
+                        <source srcset="images/logo.png">
+                        <img class="site-logo__img" src="images/logo.png" alt="logo"/>
+                    </picture>
+                </a>
+            </div>
+            <div class="header-mobile">
+                <div class="header-nav">
+                    <div class="nav-toggle"><span class="nav-toggle__link"></span><span class="nav-toggle__link"></span><span
+                            class="nav-toggle__link"></span></div>
+                    <div class="header-nav__container">
+                        <div class="header-nav__menu">
+                            <nav class="nav">
+                                <ul class="nav__list">
+                                    <li class="nav__item"><a href="#demo" class="nav__link">Demo Product</a></li>
+                                    <li class="nav__item"><a href="#experiences" class="nav__link">App Preview</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="header-nav__info">
+                            <a href="tel:9999912345678">+1 123 456 7890</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main content -->
+    <main id="main" class="main">
+        <!-- Your existing main section -->
+        <section class="section main-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col col_7 col_desktop-12 order-desktop-2">
+                        <div class="photo-list main-photo">
+                            <div class="main-photo__fon">
+                                <!-- Your existing SVG -->
+                            </div>
+                            <div class="photo-item main-photo-item main-photo-item-1">
+                                <div class="photo-img">
+                                    <div class="photo-img__block">
+                                        <img src="images/content/main-page-1.jpg" alt="main-page-1">
+                                    </div>
+                                </div>
+                                <div class="photo-info wysiwyg"></div>
+                            </div>
+                            <div class="photo-item main-photo-item main-photo-item-2">
+                                <div class="photo-img">
+                                    <div class="photo-img__block">
+                                        <img src="images/content/main-page-2.jpg" alt="main-page-2">
+                                    </div>
+                                </div>
+                                <div class="photo-info wysiwyg"><p>Because why not</p></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col_5 col_desktop-12 order-desktop-1">
+                        <div class="main-container">
+                            <h1 class="h1 main-title">Fresh & Simple with<br><span class="round-border round-border-1">BrightBite</span></h1>
+                            <div class="wysiwyg main-description">Smart tags that are able to notify you when it's time to get that last bite in before your foods go to waste in the fridge.</div>
+                            <button type="button" class="btn popup-init" data-popupname="location-popup">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="demo" class="section" style="height: 600px;">
+            <div class="container">
+                <div class="row">
+                    <div class="col col_6 col_desktop-12">
+                        <div class="photo-list emotional-photo">
+                            <div class="Sirv" data-src="https://rayanhossain.sirv.com/Images/BrightBite.glb"></div>
+                    </div>
+                    <div class="col col_6 col_desktop-12" style="margin-left: 700px; position: relative; top: -300px; width: 600px;">
+                        <h2 class="h2 emotional-title">Here is a 3D model of the BrightBite Smart Clip. It consists of an LED indicating the freshness of your food, an individual tag number for pairing with the app, and strong adhesive on the back to stick to any containers even in the coldest temperatures.</h2>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- NEW FOOD SCANNER SECTION -->
+        <section id="experiences" class="section" style="min-height: 700px; padding: 60px 0;">
+            <div class="container">
+                <div class="row">
+                    <div class="col col_12">
+                        <h2 class="h2 title text-center" style="margin-bottom: 40px;">BrightBite App Preview (with $1.99 monthly subscription)</h2>
+                        
+                        <!-- Food Scanner Container -->
+                        <div class="brightbite-food-scanner">
+                            <style>
+                                .brightbite-food-scanner {
+                                    max-width: 700px;
+                                    margin: 0 auto;
+                                    padding: 30px;
+                                    background: #ffffff;
+                                    border-radius: 20px;
+                                    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                                    position: relative;
+                                    z-index: 10;
+                                }
+
+                                .brightbite-food-scanner * {
+                                    box-sizing: border-box;
+                                }
+
+                                .scanner-title {
+                                    text-align: center;
+                                    color: #333;
+                                    margin-bottom: 30px;
+                                    font-size: 24px;
+                                    font-weight: 600;
+                                }
+
+                                .scanner-controls {
+                                    display: flex;
+                                    gap: 15px;
+                                    margin-bottom: 25px;
+                                    justify-content: center;
+                                    flex-wrap: wrap;
+                                }
+
+                                .scanner-btn {
+                                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                                    color: white;
+                                    border: none;
+                                    padding: 12px 24px;
+                                    border-radius: 25px;
+                                    cursor: pointer;
+                                    font-size: 14px;
+                                    font-weight: 600;
+                                    transition: all 0.3s ease;
+                                    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+                                    min-width: 140px;
+                                }
+
+                                .scanner-btn:hover {
+                                    transform: translateY(-2px);
+                                    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+                                }
+
+                                .scanner-btn:disabled {
+                                    background: #cccccc;
+                                    cursor: not-allowed;
+                                    transform: none;
+                                    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                                }
+
+                                .scanner-manual-entry {
+                                    background: #f8f9fa;
+                                    padding: 20px;
+                                    border-radius: 15px;
+                                    margin-bottom: 25px;
+                                    display: none;
+                                    text-align: center;
+                                }
+
+                                .scanner-input-group {
+                                    display: flex;
+                                    gap: 10px;
+                                    align-items: center;
+                                    justify-content: center;
+                                    flex-wrap: wrap;
+                                    margin-bottom: 10px;
+                                }
+
+                                .scanner-input {
+                                    padding: 12px 16px;
+                                    border: 2px solid #e1e5e9;
+                                    border-radius: 10px;
+                                    font-size: 14px;
+                                    min-width: 200px;
+                                    transition: border-color 0.3s ease;
+                                }
+
+                                .scanner-input:focus {
+                                    outline: none;
+                                    border-color: #667eea;
+                                }
+
+                                .scanner-lookup-btn {
+                                    background: #28a745;
+                                    color: white;
+                                    border: none;
+                                    padding: 12px 20px;
+                                    border-radius: 10px;
+                                    cursor: pointer;
+                                    font-size: 14px;
+                                    font-weight: 600;
+                                    transition: background 0.3s ease;
+                                }
+
+                                .scanner-lookup-btn:hover {
+                                    background: #218838;
+                                }
+
+                                .scanner-qr-area {
+                                    width: 100%;
+                                    max-width: 450px;
+                                    margin: 0 auto 20px;
+                                    border-radius: 15px;
+                                    overflow: hidden;
+                                    background: #f8f9fa;
+                                    min-height: 200px;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                }
+
+                                .scanner-status {
+                                    text-align: center;
+                                    margin: 15px 0;
+                                    padding: 12px;
+                                    border-radius: 10px;
+                                    font-size: 14px;
+                                    font-weight: 500;
+                                    min-height: 20px;
+                                }
+
+                                .scanner-status.success {
+                                    background: #d4edda;
+                                    color: #155724;
+                                    border: 1px solid #c3e6cb;
+                                }
+
+                                .scanner-status.error {
+                                    background: #f8d7da;
+                                    color: #721c24;
+                                    border: 1px solid #f5c6cb;
+                                }
+
+                                .scanner-status.info {
+                                    background: #d1ecf1;
+                                    color: #0c5460;
+                                    border: 1px solid #bee5eb;
+                                }
+
+                                .scanner-results {
+                                    background: #ffffff;
+                                    border: 2px solid #f1f3f4;
+                                    border-radius: 15px;
+                                    padding: 25px;
+                                    margin-top: 25px;
+                                    display: none;
+                                }
+
+                                .scanner-loading {
+                                    text-align: center;
+                                    padding: 30px;
+                                    color: #666;
+                                }
+
+                                .scanner-spinner {
+                                    border: 3px solid #f3f3f3;
+                                    border-top: 3px solid #667eea;
+                                    border-radius: 50%;
+                                    width: 40px;
+                                    height: 40px;
+                                    animation: scanner-spin 1s linear infinite;
+                                    margin: 0 auto 15px;
+                                }
+
+                                @keyframes scanner-spin {
+                                    0% { transform: rotate(0deg); }
+                                    100% { transform: rotate(360deg); }
+                                }
+
+                                .product-display {
+                                    text-align: center;
+                                    margin-bottom: 25px;
+                                }
+
+                                .product-img {
+                                    width: 160px;
+                                    height: 160px;
+                                    object-fit: cover;
+                                    border-radius: 12px;
+                                    margin: 0 auto 15px;
+                                    display: block;
+                                    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                                }
+
+                                .product-title {
+                                    font-size: 20px;
+                                    font-weight: 700;
+                                    color: #333;
+                                    margin-bottom: 25px;
+                                    line-height: 1.4;
+                                }
+
+                                .expiry-tracker {
+                                    background: #f8f9fa;
+                                    padding: 20px;
+                                    border-radius: 12px;
+                                    margin-bottom: 25px;
+                                }
+
+                                .expiry-tracker h4 {
+                                    margin: 0 0 15px 0;
+                                    color: #333;
+                                    font-size: 16px;
+                                    font-weight: 600;
+                                }
+
+                                .expiry-inputs {
+                                    display: flex;
+                                    gap: 10px;
+                                    align-items: center;
+                                    justify-content: center;
+                                    flex-wrap: wrap;
+                                    margin-bottom: 15px;
+                                }
+
+                                .expiry-inputs span {
+                                    color: #666;
+                                    font-weight: 500;
+                                }
+
+                                .expiry-result {
+                                    padding: 12px;
+                                    border-radius: 8px;
+                                    text-align: center;
+                                    font-weight: 600;
+                                    display: none;
+                                    margin-top: 15px;
+                                }
+
+                                .expiry-result.expired {
+                                    background: #f8d7da;
+                                    color: #721c24;
+                                }
+
+                                .expiry-result.warning {
+                                    background: #fff3cd;
+                                    color: #856404;
+                                }
+
+                                .expiry-result.good {
+                                    background: #d4edda;
+                                    color: #155724;
+                                }
+
+                                .recipes-area {
+                                    margin-top: 25px;
+                                    display: none;
+                                }
+
+                                .recipes-area h4 {
+                                    margin: 0 0 20px 0;
+                                    color: #333;
+                                    font-size: 18px;
+                                    font-weight: 600;
+                                    text-align: center;
+                                }
+
+                                .recipes-grid {
+                                    display: grid;
+                                    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                                    gap: 20px;
+                                }
+
+                                .recipe-item {
+                                    background: white;
+                                    border: 1px solid #e1e5e9;
+                                    border-radius: 12px;
+                                    overflow: hidden;
+                                    transition: transform 0.3s ease, box-shadow 0.3s ease;
+                                }
+
+                                .recipe-item:hover {
+                                    transform: translateY(-3px);
+                                    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+                                }
+
+                                .recipe-img {
+                                    width: 100%;
+                                    height: 180px;
+                                    object-fit: cover;
+                                }
+
+                                .recipe-info {
+                                    padding: 18px;
+                                }
+
+                                .recipe-name {
+                                    font-size: 16px;
+                                    font-weight: 600;
+                                    margin-bottom: 8px;
+                                    color: #333;
+                                    line-height: 1.3;
+                                }
+
+                                .recipe-category {
+                                    background: #e9ecef;
+                                    color: #495057;
+                                    padding: 4px 8px;
+                                    border-radius: 6px;
+                                    font-size: 12px;
+                                    display: inline-block;
+                                    margin-bottom: 12px;
+                                    font-weight: 500;
+                                }
+
+                                .recipe-preview {
+                                    color: #666;
+                                    font-size: 14px;
+                                    line-height: 1.4;
+                                    max-height: 84px;
+                                    overflow: hidden;
+                                }
+
+                                .scanner-help-text {
+                                    font-size: 12px;
+                                    color: #666;
+                                    text-align: center;
+                                    margin-top: 10px;
+                                    line-height: 1.4;
+                                }
+
+                                @media (max-width: 768px) {
+                                    .brightbite-food-scanner {
+                                        margin: 0 15px;
+                                        padding: 20px;
+                                    }
+                                    
+                                    .scanner-controls {
+                                        flex-direction: column;
+                                        align-items: center;
+                                    }
+                                    
+                                    .scanner-btn {
+                                        width: 100%;
+                                        max-width: 250px;
+                                    }
+
+                                    .scanner-input-group,
+                                    .expiry-inputs {
+                                        flex-direction: column;
+                                        gap: 15px;
+                                    }
+
+                                    .scanner-input {
+                                        width: 100%;
+                                        min-width: unset;
+                                    }
+
+                                    .scanner-qr-area {
+                                        max-width: 100%;
+                                    }
+
+                                    .recipes-grid {
+                                        grid-template-columns: 1fr;
+                                    }
+                                }
+                            </style>
+
+                            <div class="scanner-title">What would you like to track with tag #A367</div>
+                            
+                            <div class="scanner-controls">
+                                <button class="scanner-btn" id="bb-start-scan" onclick="bbStartScanner()">Start Camera</button>
+                                <button class="scanner-btn" id="bb-stop-scan" onclick="bbStopScanner()" disabled>Stop Camera</button>
+                                <button class="scanner-btn" id="bb-manual-toggle" onclick="bbToggleManual()">Manual Entry</button>
+                            </div>
+                            
+                            <div class="scanner-manual-entry" id="bb-manual-entry">
+                                <div class="scanner-input-group">
+                                    <input type="text" class="scanner-input" id="bb-barcode-input" placeholder="Enter barcode (e.g., 3017620425035)">
+                                    <button class="scanner-lookup-btn" onclick="bbLookupBarcode()">Search</button>
+                                </div>
+                                <div class="scanner-help-text">
+                                    Tip: Find the barcode on your product packaging. look for number usually 8-13 digits
+                                </div>
+                            </div>
+                            
+                            <div class="scanner-qr-area" id="bb-qr-reader">
+                                <div style="color: #999; text-align: center;">
+                                    <div style="font-size: 48px; margin-bottom: 10px;">📱</div>
+                                    <div>Click Start Camera to begin scanning</div>
+                                </div>
+                            </div>
+                            
+                            <div class="scanner-status" id="bb-status"></div>
+
+                            <div class="scanner-results" id="bb-results">
+                                <div class="scanner-loading" id="bb-loading" style="display: none;">
+                                    <div class="scanner-spinner"></div>
+                                    <div>Loading product information...</div>
+                                </div>
+                                
+                                <div id="bb-product-info">
+                                    <!-- Product info will be inserted here -->
+                                </div>
+
+                                <div class="scanner-loading" id="bb-recipe-loading" style="display: none;">
+                                    <div class="scanner-spinner"></div>
+                                    <div>Finding recipe suggestions...</div>
+                                </div>
+
+                                <div class="recipes-area" id="bb-recipes">
+                                    <h4>Recipe Ideas</h4>
+                                    <div class="recipes-grid" id="bb-recipes-grid">
+                                        <!-- Recipes will be inserted here -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Rest of your existing sections continue here... -->
+        
+    </main>
+</div>
+<script src="https://scripts.sirv.com/sirvjs/v3/sirv.js"></script>
+<script>
+// BrightBite Food Scanner - Completely isolated implementation
+class BrightBiteFoodScanner {
+    constructor() {
+        this.scanner = null;
+        this.isScanning = false;
+        this.init();
+    }
+
+    init() {
+        // Set up event listeners
+        const barcodeInput = document.getElementById('bb-barcode-input');
+        if (barcodeInput) {
+            barcodeInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    this.lookupBarcode();
+                }
+            });
+        }
+
+        // Check library availability after a short delay
+        setTimeout(() => {
+            this.checkLibraryStatus();
+        }, 1000);
+    }
+
+    checkLibraryStatus() {
+        if (typeof Html5Qrcode === 'undefined') {
+            this.showStatus('Scanner library not available. Manual entry is ready to use.', 'error');
+            document.getElementById('bb-manual-entry').style.display = 'block';
+        }
+    }
+
+    showStatus(message, type = '') {
+        const statusEl = document.getElementById('bb-status');
+        statusEl.textContent = message;
+        statusEl.className = `scanner-status ${type}`;
+    }
+
+    async startScanner() {
+        if (this.isScanning) return;
+
+        // Check for library
+        if (typeof Html5Qrcode === 'undefined') {
+            this.showStatus('Scanner library not loaded. Please use manual entry.', 'error');
+            document.getElementById('bb-manual-entry').style.display = 'block';
+            return;
+        }
+
+        // Check for HTTPS
+        if (location.protocol !== 'https:' && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+            this.showStatus('Camera requires secure connection (HTTPS). Use manual entry instead.', 'error');
+            document.getElementById('bb-manual-entry').style.display = 'block';
+            return;
+        }
+
+        const startBtn = document.getElementById('bb-start-scan');
+        const stopBtn = document.getElementById('bb-stop-scan');
+
+        this.showStatus('Requesting camera permission...', 'info');
+
+        try {
+            this.scanner = new Html5Qrcode("bb-qr-reader");
+            
+            await this.scanner.start(
+                { facingMode: "environment" },
+                {
+                    fps: 10,
+                    qrbox: { width: 280, height: 280 }
+                },
+                (decodedText) => this.onScanSuccess(decodedText),
+                (error) => {
+                    // Suppress scan error messages
+                }
+            );
+
+            this.isScanning = true;
+            startBtn.disabled = true;
+            stopBtn.disabled = false;
+            this.showStatus('Camera active - point at barcode or QR code', 'success');
+
+        } catch (err) {
+            console.error('Scanner error:', err);
+            let errorMsg = 'Camera failed to start. ';
+            
+            if (err.name === 'NotAllowedError') {
+                errorMsg += 'Camera permission denied.';
+            } else if (err.name === 'NotFoundError') {
+                errorMsg += 'No camera found.';
+            } else if (err.name === 'SecurityError') {
+                errorMsg += 'Security restrictions.';
+            } else {
+                errorMsg += 'Please try manual entry.';
+            }
+            
+            this.showStatus(errorMsg, 'error');
+            document.getElementById('bb-manual-entry').style.display = 'block';
+        }
+    }
+
+    async stopScanner() {
+        if (!this.isScanning || !this.scanner) return;
+
+        try {
+            await this.scanner.stop();
+            this.scanner.clear();
+            
+            // Reset the QR reader area
+            document.getElementById('bb-qr-reader').innerHTML = `
+                <div style="color: #999; text-align: center;">
+                    <div style="font-size: 48px; margin-bottom: 10px;">📱</div>
+                    <div>Click "Start Camera" to begin scanning</div>
+                </div>
+            `;
+
+            this.isScanning = false;
+            document.getElementById('bb-start-scan').disabled = false;
+            document.getElementById('bb-stop-scan').disabled = true;
+            this.showStatus('Camera stopped', 'info');
+
+        } catch (err) {
+            console.error('Error stopping scanner:', err);
+        }
+    }
+
+    toggleManualEntry() {
+        const manualEntry = document.getElementById('bb-manual-entry');
+        const isVisible = manualEntry.style.display !== 'none';
+        manualEntry.style.display = isVisible ? 'none' : 'block';
+        
+        if (!isVisible) {
+            document.getElementById('bb-barcode-input').focus();
+        }
+    }
+
+    onScanSuccess(decodedText) {
+        this.showStatus(`Scanned: ${decodedText}`, 'success');
+        this.lookupProduct(decodedText);
+    }
+
+    lookupBarcode() {
+        const input = document.getElementById('bb-barcode-input');
+        const code = input.value.trim();
+        
+        if (!code) {
+            alert('Please enter a barcode number');
+            return;
+        }
+        
+        if (!/^\d{8,13}$/.test(code)) {
+            alert('Please enter a valid barcode (8-13 digits)');
+            return;
+        }
+        
+        this.lookupProduct(code);
+    }
+
+    async lookupProduct(barcode) {
+        const resultsEl = document.getElementById('bb-results');
+        const loadingEl = document.getElementById('bb-loading');
+        const productEl = document.getElementById('bb-product-info');
+        
+        resultsEl.style.display = 'block';
+        loadingEl.style.display = 'block';
+        productEl.innerHTML = '';
+        
+        try {
+            const response = await fetch(`https://world.openfoodfacts.org/api/v0/product/${barcode}.json`);
+            const data = await response.json();
+            
+            loadingEl.style.display = 'none';
+            
+            if (data.status === 1 && data.product) {
+                this.displayProduct(data.product);
+                this.findRecipes(data.product);
+            } else {
+                productEl.innerHTML = `
+                    <div class="product-display">
+                        <div class="product-title">Product Not Found</div>
+                        <p>Barcode: ${barcode}</p>
+                        <p>This product is not in our database. Try scanning another item or enter the details manually.</p>
+                    </div>
+                `;
+            }
+            
+        } catch (error) {
+            console.error('Product lookup error:', error);
+            loadingEl.style.display = 'none';
+            productEl.innerHTML = `
+                <div class="product-display">
+                    <div class="product-title">Connection Error</div>
+                    <p>Unable to fetch product information. Please check your internet connection and try again.</p>
+                </div>
+            `;
+        }
+    }
+
+    displayProduct(product) {
+        const name = product.product_name || product.product_name_en || 'Unknown Product';
+        const imageUrl = product.image_url || product.image_front_url || 'https://via.placeholder.com/160x160?text=No+Image';
+        
+        document.getElementById('bb-product-info').innerHTML = `
+            <div class="product-display">
+                <img src="${imageUrl}" alt="${name}" class="product-img" 
+                     onerror="this.src='https://via.placeholder.com/160x160?text=No+Image'">
+                <div class="product-title">${name}</div>
+            </div>
+            
+            <div class="expiry-tracker">
+                <h4>Track Expiration</h4>
+                <div class="expiry-inputs">
+                    <input type="date" class="scanner-input" id="bb-expiry-date" title="Expiration Date">
+                    <span>or</span>
+                    <input type="date" class="scanner-input" id="bb-opened-date" title="Date Opened">
+                    <button class="scanner-lookup-btn" onclick="bbScanner.checkExpiry()">Check Status</button>
+                </div>
+                <div class="expiry-result" id="bb-expiry-result"></div>
+            </div>
+        `;
+    }
+
+    checkExpiry() {
+        const expiryDate = document.getElementById('bb-expiry-date').value;
+        const openedDate = document.getElementById('bb-opened-date').value;
+        const resultEl = document.getElementById('bb-expiry-result');
+        
+        if (!expiryDate && !openedDate) {
+            alert('Please select either an expiration date or the date you opened the product');
+            return;
+        }
+        
+        const today = new Date();
+        let message, className;
+        
+        if (expiryDate) {
+            const expiry = new Date(expiryDate);
+            const daysDiff = Math.ceil((expiry.getTime() - today.getTime()) / (1000 * 3600 * 24));
+            
+            if (daysDiff < 0) {
+                message = `Expired ${Math.abs(daysDiff)} days ago`;
+                className = 'expired';
+            } else if (daysDiff <= 3) {
+                message = `Expires in ${daysDiff} day${daysDiff !== 1 ? 's' : ''}`;
+                className = 'warning';
+            } else {
+                message = `Fresh - expires in ${daysDiff} days`;
+                className = 'good';
+            }
+        } else {
+            const opened = new Date(openedDate);
+            const daysSince = Math.ceil((today.getTime() - opened.getTime()) / (1000 * 3600 * 24));
+            
+            if (daysSince > 7) {
+                message = `Opened ${daysSince} days ago - check freshness`;
+                className = 'warning';
+            } else {
+                message = `Opened ${daysSince} days ago - likely fresh`;
+                className = 'good';
+            }
+        }
+        
+        resultEl.textContent = message;
+        resultEl.className = `expiry-result ${className}`;
+        resultEl.style.display = 'block';
+    }
+
+    async findRecipes(product) {
+        const recipeLoadingEl = document.getElementById('bb-recipe-loading');
+        const recipesEl = document.getElementById('bb-recipes');
+        
+        recipeLoadingEl.style.display = 'block';
+        recipesEl.style.display = 'none';
+        
+        try {
+            const ingredient = this.extractIngredient(product);
+            
+            if (!ingredient) {
+                recipeLoadingEl.style.display = 'none';
+                return;
+            }
+            
+            const recipes = await this.fetchRecipes(ingredient);
+            recipeLoadingEl.style.display = 'none';
+            
+            if (recipes && recipes.length > 0) {
+                this.displayRecipes(recipes);
+                recipesEl.style.display = 'block';
+            }
+            
+        } catch (error) {
+            console.error('Recipe search error:', error);
+            recipeLoadingEl.style.display = 'none';
+        }
+    }
+
+    extractIngredient(product) {
+        const productName = (product.product_name || product.product_name_en || '').toLowerCase();
+        
+        const ingredients = [
+            'chicken', 'beef', 'pork', 'fish', 'salmon', 'tuna', 'turkey',
+            'tomato', 'potato', 'onion', 'garlic', 'carrot', 'broccoli', 'spinach',
+            'cheese', 'milk', 'egg', 'butter', 'yogurt',
+            'rice', 'pasta', 'bread', 'flour', 'oats',
+            'apple', 'banana', 'lemon', 'orange', 'strawberry', 'mushroom'
+        ];
+        
+        for (const ingredient of ingredients) {
+            if (productName.includes(ingredient)) {
+                return ingredient;
+            }
+        }
+        
+        // Fallback to first word
+        const firstWord = productName.split(' ')[0];
+        return firstWord && firstWord.length > 2 ? firstWord : null;
+    }
+
+    async fetchRecipes(ingredient) {
+        try {
+            const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${encodeURIComponent(ingredient)}`);
+            const data = await response.json();
+            
+            if (data.meals) {
+                const detailedRecipes = await Promise.all(
+                    data.meals.slice(0, 4).map(async (meal) => {
+                        const detailResponse = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${meal.idMeal}`);
+                        const detailData = await detailResponse.json();
+                        return detailData.meals[0];
+                    })
+                );
+                return detailedRecipes;
+            }
+            
+            return null;
+        } catch (error) {
+            console.error('Recipe fetch error:', error);
+            return null;
+        }
+    }
+
+    displayRecipes(recipes) {
+        const recipesHtml = recipes.map(recipe => `
+            <div class="recipe-item">
+                <img src="${recipe.strMealThumb}" alt="${recipe.strMeal}" class="recipe-img">
+                <div class="recipe-info">
+                    <div class="recipe-name">${recipe.strMeal}</div>
+                    <div class="recipe-category">${recipe.strCategory}</div>
+                    <div class="recipe-preview">
+                        ${recipe.strInstructions.substring(0, 100)}...
+                    </div>
+                </div>
+            </div>
+        `).join('');
+        
+        document.getElementById('bb-recipes-grid').innerHTML = recipesHtml;
+    }
+}
+
+// Global functions for button clicks
+function bbStartScanner() {
+    bbScanner.startScanner();
+}
+
+function bbStopScanner() {
+    bbScanner.stopScanner();
+}
+
+function bbToggleManual() {
+    bbScanner.toggleManualEntry();
+}
+
+function bbLookupBarcode() {
+    bbScanner.lookupBarcode();
+}
+
+// Initialize scanner when page loads
+let bbScanner;
+document.addEventListener('DOMContentLoaded', function() {
+    bbScanner = new BrightBiteFoodScanner();
+});
+
+// Also initialize if script loads after DOM
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+        bbScanner = new BrightBiteFoodScanner();
+    });
+} else {
+    bbScanner = new BrightBiteFoodScanner();
+}
+</script>
+
+<!-- Your existing JavaScript files -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="js/libs.min.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>

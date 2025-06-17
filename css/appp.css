@@ -1,0 +1,53 @@
+#food-scanner {
+      font-family: Arial, sans-serif;
+      max-width: 400px;
+      margin: 20px auto;
+      border: 1px solid #ccc;
+      padding: 16px;
+      border-radius: 8px;
+      background: #f9f9f9;
+    }
+
+    #food-scanner img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-top: 12px;
+    }
+
+    #food-scanner h2 {
+      font-size: 1.25rem;
+      margin-top: 12px;
+      margin-bottom: 8px;
+    }
+
+    #food-scanner label,
+    #food-scanner input,
+    #food-scanner button {
+      display: block;
+      width: 100%;
+      margin: 8px 0;
+    }
+
+    #food-scanner input {
+      padding: 8px;
+      border: 1px solid #bbb;
+      border-radius: 4px;
+    }
+
+    #food-scanner button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    #food-scanner .recipe {
+      background: #fff;
+      padding: 10px;
+      border-radius: 4px;
+      margin-top: 10px;
+      border: 1px solid #ddd;
+    }
