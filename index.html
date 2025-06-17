@@ -104,7 +104,7 @@
             </div>
         </section>
         <!-- NEW FOOD SCANNER SECTION -->
-        <section id="experiences" class="section" style="min-height: 700px; padding: 60px 0;">
+         <section id="experiences" class="section" style="min-height: 700px; padding: 60px 0;">
             <div class="container">
                 <div class="row">
                     <div class="col col_12">
@@ -441,45 +441,254 @@
                                     line-height: 1.4;
                                 }
 
+                                /* Mobile Optimizations */
                                 @media (max-width: 768px) {
                                     .brightbite-food-scanner {
-                                        margin: 0 15px;
-                                        padding: 20px;
+                                        margin: 0 10px;
+                                        padding: 15px;
+                                        border-radius: 15px;
+                                    }
+
+                                    .scanner-title {
+                                        font-size: 20px;
+                                        margin-bottom: 20px;
                                     }
                                     
                                     .scanner-controls {
                                         flex-direction: column;
-                                        align-items: center;
+                                        align-items: stretch;
+                                        gap: 12px;
                                     }
                                     
                                     .scanner-btn {
                                         width: 100%;
-                                        max-width: 250px;
+                                        padding: 14px 20px;
+                                        font-size: 16px;
+                                        border-radius: 12px;
+                                        min-height: 50px;
+                                        touch-action: manipulation;
+                                        -webkit-tap-highlight-color: transparent;
                                     }
 
-                                    .scanner-input-group,
-                                    .expiry-inputs {
+                                    .scanner-manual-entry {
+                                        padding: 15px;
+                                        border-radius: 12px;
+                                        margin-bottom: 15px;
+                                    }
+
+                                    .scanner-input-group {
                                         flex-direction: column;
-                                        gap: 15px;
+                                        gap: 12px;
+                                        align-items: stretch;
                                     }
 
                                     .scanner-input {
                                         width: 100%;
-                                        min-width: unset;
+                                        padding: 14px 16px;
+                                        font-size: 16px;
+                                        border-radius: 12px;
+                                        min-height: 50px;
+                                        -webkit-appearance: none;
+                                        -moz-appearance: none;
+                                        appearance: none;
+                                    }
+
+                                    .scanner-lookup-btn {
+                                        width: 100%;
+                                        padding: 14px 20px;
+                                        font-size: 16px;
+                                        border-radius: 12px;
+                                        min-height: 50px;
+                                        touch-action: manipulation;
                                     }
 
                                     .scanner-qr-area {
                                         max-width: 100%;
+                                        min-height: 250px;
+                                        border-radius: 12px;
+                                        margin-bottom: 15px;
+                                    }
+
+                                    .scanner-status {
+                                        margin: 10px 0;
+                                        padding: 12px;
+                                        font-size: 14px;
+                                        border-radius: 8px;
+                                    }
+
+                                    .scanner-results {
+                                        padding: 20px;
+                                        border-radius: 12px;
+                                        margin-top: 20px;
+                                    }
+
+                                    .product-img {
+                                        width: 140px;
+                                        height: 140px;
+                                        margin-bottom: 12px;
+                                    }
+
+                                    .product-title {
+                                        font-size: 18px;
+                                        margin-bottom: 20px;
+                                        line-height: 1.3;
+                                    }
+
+                                    .expiry-tracker {
+                                        padding: 15px;
+                                        border-radius: 10px;
+                                        margin-bottom: 20px;
+                                    }
+
+                                    .expiry-inputs {
+                                        flex-direction: column;
+                                        gap: 12px;
+                                        align-items: stretch;
+                                    }
+
+                                    .expiry-inputs span {
+                                        text-align: center;
+                                        margin: 5px 0;
+                                        font-size: 14px;
                                     }
 
                                     .recipes-grid {
                                         grid-template-columns: 1fr;
+                                        gap: 15px;
+                                    }
+
+                                    .recipe-item {
+                                        border-radius: 10px;
+                                    }
+
+                                    .recipe-img {
+                                        height: 160px;
+                                    }
+
+                                    .recipe-info {
+                                        padding: 15px;
+                                    }
+
+                                    .recipe-name {
+                                        font-size: 15px;
+                                        line-height: 1.2;
+                                    }
+
+                                    .scanner-help-text {
+                                        font-size: 13px;
+                                        margin-top: 8px;
+                                    }
+                                }
+
+                                /* Extra small mobile devices */
+                                @media (max-width: 480px) {
+                                    .brightbite-food-scanner {
+                                        margin: 0 5px;
+                                        padding: 12px;
+                                    }
+
+                                    .scanner-title {
+                                        font-size: 18px;
+                                        margin-bottom: 15px;
+                                    }
+
+                                    .scanner-qr-area {
+                                        min-height: 220px;
+                                    }
+
+                                    .product-img {
+                                        width: 120px;
+                                        height: 120px;
+                                    }
+
+                                    .product-title {
+                                        font-size: 16px;
+                                    }
+
+                                    .scanner-btn, .scanner-lookup-btn {
+                                        min-height: 48px;
+                                        padding: 12px 16px;
+                                        font-size: 15px;
+                                    }
+
+                                    .scanner-input {
+                                        min-height: 48px;
+                                        padding: 12px 14px;
+                                        font-size: 15px;
+                                    }
+
+                                    .recipe-img {
+                                        height: 140px;
+                                    }
+                                }
+
+                                /* Mobile optimization class */
+                                .brightbite-food-scanner.mobile-optimized {
+                                    touch-action: manipulation;
+                                    -webkit-text-size-adjust: 100%;
+                                    -webkit-touch-callout: none;
+                                    -webkit-user-select: none;
+                                    -moz-user-select: none;
+                                    -ms-user-select: none;
+                                    user-select: none;
+                                }
+
+                                .brightbite-food-scanner.mobile-optimized .scanner-input {
+                                    font-size: 16px !important; /* Prevent zoom on iOS */
+                                    -webkit-appearance: none;
+                                    -moz-appearance: textfield;
+                                }
+
+                                .brightbite-food-scanner.mobile-optimized .scanner-btn {
+                                    -webkit-touch-callout: none;
+                                    -webkit-user-select: none;
+                                    touch-action: manipulation;
+                                }
+                                @media (hover: none) and (pointer: coarse) {
+                                    .scanner-btn:hover,
+                                    .scanner-lookup-btn:hover {
+                                        transform: none;
+                                        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+                                    }
+
+                                    .recipe-item:hover {
+                                        transform: none;
+                                        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                                    }
+
+                                    .scanner-btn:active,
+                                    .scanner-lookup-btn:active {
+                                        transform: scale(0.98);
+                                        transition: transform 0.1s ease;
+                                    }
+                                }
+
+                                /* Landscape mobile orientation */
+                                @media (max-width: 768px) and (orientation: landscape) {
+                                    .scanner-qr-area {
+                                        min-height: 200px;
+                                    }
+
+                                    .brightbite-food-scanner {
+                                        padding: 15px;
+                                    }
+
+                                    .scanner-controls {
+                                        flex-direction: row;
+                                        flex-wrap: wrap;
+                                        justify-content: center;
+                                    }
+
+                                    .scanner-btn {
+                                        flex: 1;
+                                        min-width: 120px;
+                                        max-width: 180px;
                                     }
                                 }
                             </style>
 
-                            <div class="scanner-title">What would you like to track with tag #A367</div>
-                            
+                            <div class="scanner-title">Scan the Product to associate with tag #A367</div>
+
                             <div class="scanner-controls">
                                 <button class="scanner-btn" id="bb-start-scan" onclick="bbStartScanner()">Start Camera</button>
                                 <button class="scanner-btn" id="bb-stop-scan" onclick="bbStopScanner()" disabled>Stop Camera</button>
@@ -492,14 +701,14 @@
                                     <button class="scanner-lookup-btn" onclick="bbLookupBarcode()">Search</button>
                                 </div>
                                 <div class="scanner-help-text">
-                                    Tip: Find the barcode on your product packaging. look for number usually 8-13 digits
+                                    Tip: Find the barcode on your product packaging - usually 8-13 digits
                                 </div>
                             </div>
                             
                             <div class="scanner-qr-area" id="bb-qr-reader">
                                 <div style="color: #999; text-align: center;">
                                     <div style="font-size: 48px; margin-bottom: 10px;">📱</div>
-                                    <div>Click Start Camera to begin scanning</div>
+                                    <div>Click "Start Camera" to begin scanning</div>
                                 </div>
                             </div>
                             
@@ -548,6 +757,10 @@ class BrightBiteFoodScanner {
     }
 
     init() {
+        // Mobile device detection
+        this.isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        this.isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+
         // Set up event listeners
         const barcodeInput = document.getElementById('bb-barcode-input');
         if (barcodeInput) {
@@ -556,6 +769,24 @@ class BrightBiteFoodScanner {
                     this.lookupBarcode();
                 }
             });
+
+            // Mobile-specific input handling
+            if (this.isMobile) {
+                // Prevent zoom on input focus for iOS
+                if (this.isIOS) {
+                    barcodeInput.addEventListener('focus', () => {
+                        barcodeInput.style.fontSize = '16px';
+                    });
+                }
+
+                // Add mobile-friendly placeholder
+                barcodeInput.placeholder = 'Enter barcode (8-13 digits)';
+            }
+        }
+
+        // Mobile-specific UI adjustments
+        if (this.isMobile) {
+            this.optimizeForMobile();
         }
 
         // Check library availability after a short delay
@@ -564,10 +795,67 @@ class BrightBiteFoodScanner {
         }, 1000);
     }
 
+    optimizeForMobile() {
+        // Add mobile-specific CSS class
+        const scanner = document.querySelector('.brightbite-food-scanner');
+        if (scanner) {
+            scanner.classList.add('mobile-optimized');
+        }
+
+        // Show helpful mobile tips
+        this.showStatus('Tip: Hold your device steady when scanning barcodes', 'info');
+
+        // Auto-show manual entry on mobile if camera isn't immediately available
+        setTimeout(() => {
+            if (!this.isScanning) {
+                const manualEntry = document.getElementById('bb-manual-entry');
+                if (manualEntry && manualEntry.style.display === 'none') {
+                    manualEntry.style.display = 'block';
+                }
+            }
+        }, 3000);
+
+        // Prevent accidental zoom on double-tap
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function (event) {
+            const now = (new Date()).getTime();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+    }
+
     checkLibraryStatus() {
         if (typeof Html5Qrcode === 'undefined') {
-            this.showStatus('Scanner library not available. Manual entry is ready to use.', 'error');
+            const message = this.isMobile ? 
+                'Camera scanner not available. Manual barcode entry is ready below.' :
+                'Scanner library not available. Manual entry is ready to use.';
+            this.showStatus(message, 'error');
             document.getElementById('bb-manual-entry').style.display = 'block';
+        } else if (this.isMobile) {
+            // Mobile-specific camera availability check
+            this.checkMobileCameraAvailability();
+        }
+    }
+
+    async checkMobileCameraAvailability() {
+        try {
+            const devices = await navigator.mediaDevices.enumerateDevices();
+            const hasCamera = devices.some(device => device.kind === 'videoinput');
+            
+            if (!hasCamera) {
+                this.showStatus('No camera detected. Manual entry is available below.', 'error');
+                document.getElementById('bb-manual-entry').style.display = 'block';
+                // Disable camera button if no camera
+                document.getElementById('bb-start-scan').disabled = true;
+                document.getElementById('bb-start-scan').textContent = 'No Camera';
+            }
+        } catch (error) {
+            // If we can't check for cameras, just show manual entry
+            if (this.isMobile) {
+                document.getElementById('bb-manual-entry').style.display = 'block';
+            }
         }
     }
 
@@ -597,43 +885,126 @@ class BrightBiteFoodScanner {
         const startBtn = document.getElementById('bb-start-scan');
         const stopBtn = document.getElementById('bb-stop-scan');
 
-        this.showStatus('Requesting camera permission...', 'info');
+        this.showStatus('Starting camera...', 'info');
 
         try {
             this.scanner = new Html5Qrcode("bb-qr-reader");
             
-            await this.scanner.start(
-                { facingMode: "environment" },
-                {
+            // Try different camera configurations for mobile compatibility
+            let cameraConfig;
+            let scanConfig;
+
+            // Mobile-specific camera setup
+            const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            
+            if (isMobile) {
+                // For mobile: try multiple camera configurations
+                const configs = [
+                    // Config 1: Environment camera with exact constraint
+                    { facingMode: { exact: "environment" } },
+                    // Config 2: Environment camera with ideal constraint
+                    { facingMode: { ideal: "environment" } },
+                    // Config 3: Any camera
+                    {},
+                    // Config 4: Specific mobile constraints
+                    { 
+                        facingMode: "environment",
+                        width: { ideal: 1280 },
+                        height: { ideal: 720 }
+                    }
+                ];
+
+                let scannerStarted = false;
+                
+                for (let i = 0; i < configs.length && !scannerStarted; i++) {
+                    try {
+                        cameraConfig = configs[i];
+                        
+                        // Mobile-specific scan config with visible qrbox
+                        scanConfig = {
+                            fps: 8,
+                            qrbox: function(viewfinderWidth, viewfinderHeight) {
+                                // Calculate a visible square for mobile
+                                const minDimension = Math.min(viewfinderWidth, viewfinderHeight);
+                                const qrboxSize = Math.floor(minDimension * 0.7); // 70% of smallest dimension
+                                
+                                console.log(`Mobile qrbox: ${qrboxSize}x${qrboxSize} (viewfinder: ${viewfinderWidth}x${viewfinderHeight})`);
+                                
+                                return {
+                                    width: Math.max(200, qrboxSize), // Minimum 200px
+                                    height: Math.max(200, qrboxSize)
+                                };
+                            },
+                            aspectRatio: 1.0,
+                            disableFlip: false,
+                            videoConstraints: {
+                                width: { min: 640, ideal: 1280, max: 1920 },
+                                height: { min: 480, ideal: 720, max: 1080 }
+                            }
+                        };
+
+                        await this.scanner.start(
+                            cameraConfig,
+                            scanConfig,
+                            (decodedText) => this.onScanSuccess(decodedText),
+                            (error) => {
+                                // Suppress continuous scan errors
+                            }
+                        );
+                        
+                        scannerStarted = true;
+                        this.showStatus('Mobile camera active - point at barcode inside the square', 'success');
+                        
+                    } catch (configError) {
+                        console.log(`Camera config ${i + 1} failed:`, configError);
+                        if (i === configs.length - 1) {
+                            throw configError; // Throw the last error if all configs fail
+                        }
+                    }
+                }
+            } else {
+                // Desktop configuration
+                cameraConfig = { facingMode: "environment" };
+                scanConfig = {
                     fps: 10,
                     qrbox: { width: 280, height: 280 }
-                },
-                (decodedText) => this.onScanSuccess(decodedText),
-                (error) => {
-                    // Suppress scan error messages
-                }
-            );
+                };
+
+                await this.scanner.start(
+                    cameraConfig,
+                    scanConfig,
+                    (decodedText) => this.onScanSuccess(decodedText),
+                    (error) => {
+                        // Suppress scan error messages
+                    }
+                );
+
+                this.showStatus('Camera active - point at barcode or QR code', 'success');
+            }
 
             this.isScanning = true;
             startBtn.disabled = true;
             stopBtn.disabled = false;
-            this.showStatus('Camera active - point at barcode or QR code', 'success');
 
         } catch (err) {
             console.error('Scanner error:', err);
             let errorMsg = 'Camera failed to start. ';
             
             if (err.name === 'NotAllowedError') {
-                errorMsg += 'Camera permission denied.';
+                errorMsg += 'Please allow camera access and try again.';
             } else if (err.name === 'NotFoundError') {
-                errorMsg += 'No camera found.';
+                errorMsg += 'No camera found on this device.';
             } else if (err.name === 'SecurityError') {
-                errorMsg += 'Security restrictions.';
+                errorMsg += 'Camera blocked by security settings.';
+            } else if (err.name === 'NotReadableError') {
+                errorMsg += 'Camera is being used by another app.';
+            } else if (err.name === 'OverconstrainedError') {
+                errorMsg += 'Camera settings not supported.';
             } else {
-                errorMsg += 'Please try manual entry.';
+                errorMsg += err.message || 'Unknown camera error.';
             }
             
-            this.showStatus(errorMsg, 'error');
+            this.showStatus(errorMsg + ' Please use manual entry.', 'error');
             document.getElementById('bb-manual-entry').style.display = 'block';
         }
     }
@@ -674,8 +1045,21 @@ class BrightBiteFoodScanner {
     }
 
     onScanSuccess(decodedText) {
+        // Mobile haptic feedback on successful scan
+        if ('vibrate' in navigator) {
+            navigator.vibrate([100, 50, 100]); // Success vibration pattern
+        }
+
         this.showStatus(`Scanned: ${decodedText}`, 'success');
         this.lookupProduct(decodedText);
+
+        // Auto-stop scanner on mobile after successful scan to save battery
+        const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        if (isMobile) {
+            setTimeout(() => {
+                this.stopScanner();
+            }, 1000);
+        }
     }
 
     lookupBarcode() {
@@ -915,17 +1299,48 @@ function bbLookupBarcode() {
 
 // Initialize scanner when page loads
 let bbScanner;
-document.addEventListener('DOMContentLoaded', function() {
-    bbScanner = new BrightBiteFoodScanner();
-});
 
-// Also initialize if script loads after DOM
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function() {
+function initializeBrightBiteScanner() {
+    try {
         bbScanner = new BrightBiteFoodScanner();
-    });
+        
+        // Mobile-specific initialization
+        const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        if (isMobile) {
+            console.log('Mobile device detected - optimizing scanner interface');
+            
+            // Show manual entry by default on mobile for better UX
+            setTimeout(() => {
+                const manualEntry = document.getElementById('bb-manual-entry');
+                if (manualEntry && !bbScanner.isScanning) {
+                    manualEntry.style.display = 'block';
+                }
+            }, 2000);
+        }
+    } catch (error) {
+        console.error('Failed to initialize BrightBite Scanner:', error);
+        // Fallback: show manual entry if scanner fails to initialize
+        setTimeout(() => {
+            const manualEntry = document.getElementById('bb-manual-entry');
+            if (manualEntry) {
+                manualEntry.style.display = 'block';
+            }
+            const status = document.getElementById('bb-status');
+            if (status) {
+                status.textContent = 'Scanner initialization failed. Manual entry is available.';
+                status.className = 'scanner-status error';
+            }
+        }, 1000);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', initializeBrightBiteScanner);
+
+// Also initialize if script loads after DOM (fallback)
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeBrightBiteScanner);
 } else {
-    bbScanner = new BrightBiteFoodScanner();
+    initializeBrightBiteScanner();
 }
 </script>
 
